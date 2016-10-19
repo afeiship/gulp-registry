@@ -1,0 +1,8 @@
+/*webkit-sassui-button Start*/
+@mixin webkit-sassui-button($inColor:#666,$inBgColor:#E1F0FF,$inBorderColor:#009FF0,$inRadius:2px) {
+  background: $inBgColor;
+  border: 1px solid $inBorderColor;
+  border-radius: $inRadius;
+  color:$inColor;
+}
+/*webkit-sassui-button End*/

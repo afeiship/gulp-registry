@@ -1,0 +1,15 @@
+@import "../dist/webkit-sassui-button.scss";
+.bdgn{
+  border: none;
+  background: none;
+}
+.test-webkit-sassui-button1{
+  @include webkit-sassui-button();
+  font-size: 13px;
+  padding:2px 10px;
+}
+
+
+.test-webkit-sassui-button2{
+  @include webkit-sassui-button();
+}

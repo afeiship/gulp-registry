@@ -1,0 +1,22 @@
+/*webkit-sassui-button Start*/
+/*webkit-sassui-button End*/
+.bdgn {
+  border: none;
+  background: none;
+}
+
+.test-webkit-sassui-button1 {
+  background: #E1F0FF;
+  border: 1px solid #009FF0;
+  border-radius: 2px;
+  color: #666;
+  font-size: 13px;
+  padding: 2px 10px;
+}
+
+.test-webkit-sassui-button2 {
+  background: #E1F0FF;
+  border: 1px solid #009FF0;
+  border-radius: 2px;
+  color: #666;
+}
