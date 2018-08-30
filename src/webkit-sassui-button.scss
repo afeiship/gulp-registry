@@ -26,6 +26,9 @@ $webkit-sassui-button-options: (
   $theme-map: map-get($map: $webkit-sassui-button-options, $key: theme-map );
   $size-map: map-get($map: $webkit-sassui-button-options, $key: size-map );
   $amount-map: map-get($map: $webkit-sassui-button-options, $key: amount-map );
+  $darken: map-get($map: $amount-map, $key: darken );
+  $lighten: map-get($map: $amount-map, $key: lighten );
+
 
   //reset:
   border:none;
@@ -68,7 +71,7 @@ $webkit-sassui-button-options: (
       color:#fff;
       border:1px solid $theme;
       &:active{
-        background: darken($theme,8%);
+        background: darken($theme,$darken);
       }
 
       &[data-outline=true]{
@@ -77,7 +80,7 @@ $webkit-sassui-button-options: (
 
         &:active{
           color:#fff;
-          background: lighten($theme,8%);
+          background: lighten($theme,$lighten);
         }
       }
     }
