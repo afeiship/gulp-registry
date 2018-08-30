@@ -1,6 +1,7 @@
 /*webkit-sassui-button Start*/
 $webkit-sassui-button-options: (
   padding: 1em 2em,
+  duration: 300ms,
   theme-map:(
     primary:#387ef5,
     secondary:#ff2d55,
@@ -21,6 +22,7 @@ $webkit-sassui-button-options: (
 .webkit-sassui-button{
 
   $padding: map-get($map: $webkit-sassui-button-options, $key: padding );
+  $duration: map-get($map: $webkit-sassui-button-options, $key: duration );
   $theme-map: map-get($map: $webkit-sassui-button-options, $key: theme-map );
   $size-map: map-get($map: $webkit-sassui-button-options, $key: size-map );
   $amount-map: map-get($map: $webkit-sassui-button-options, $key: amount-map );
@@ -34,6 +36,7 @@ $webkit-sassui-button-options: (
     outline: none;
   }
   padding:$padding;
+  transition: all $duration;
 
   //round:
   border-radius: .4em;
