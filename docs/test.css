@@ -9,10 +9,6 @@
   border-radius: .4em;
 }
 
-.webkit-sassui-button:focus {
-  outline: none;
-}
-
 .webkit-sassui-button[data-round=true] {
   border-radius: 100px;
 }
@@ -38,162 +34,202 @@
   font-size: 20px;
 }
 
-.webkit-sassui-button[data-theme=primary] {
+.webkit-sassui-button[data-color=primary] {
   background: #007bff;
   color: #ffffff;
   border: 1px solid #007bff;
 }
 
-.webkit-sassui-button[data-theme=primary]:active {
+.webkit-sassui-button[data-color=primary]:active {
   background: #0062cc;
 }
 
-.webkit-sassui-button[data-theme=primary][data-outline=true] {
+.webkit-sassui-button[data-color=primary]:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2em rgba(0, 123, 255, 0.5);
+}
+
+.webkit-sassui-button[data-color=primary][data-outline=true] {
   background: transparent;
   color: #007bff;
 }
 
-.webkit-sassui-button[data-theme=primary][data-outline=true]:active {
+.webkit-sassui-button[data-color=primary][data-outline=true]:active {
   color: #ffffff;
   background: #3395ff;
 }
 
-.webkit-sassui-button[data-theme=secondary] {
+.webkit-sassui-button[data-color=secondary] {
   background: #6c757d;
   color: #ffffff;
   border: 1px solid #6c757d;
 }
 
-.webkit-sassui-button[data-theme=secondary]:active {
+.webkit-sassui-button[data-color=secondary]:active {
   background: #545b62;
 }
 
-.webkit-sassui-button[data-theme=secondary][data-outline=true] {
+.webkit-sassui-button[data-color=secondary]:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2em rgba(108, 117, 125, 0.5);
+}
+
+.webkit-sassui-button[data-color=secondary][data-outline=true] {
   background: transparent;
   color: #6c757d;
 }
 
-.webkit-sassui-button[data-theme=secondary][data-outline=true]:active {
+.webkit-sassui-button[data-color=secondary][data-outline=true]:active {
   color: #ffffff;
   background: #868e96;
 }
 
-.webkit-sassui-button[data-theme=success] {
+.webkit-sassui-button[data-color=success] {
   background: #28a745;
   color: #ffffff;
   border: 1px solid #28a745;
 }
 
-.webkit-sassui-button[data-theme=success]:active {
+.webkit-sassui-button[data-color=success]:active {
   background: #1e7e34;
 }
 
-.webkit-sassui-button[data-theme=success][data-outline=true] {
+.webkit-sassui-button[data-color=success]:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2em rgba(40, 167, 69, 0.5);
+}
+
+.webkit-sassui-button[data-color=success][data-outline=true] {
   background: transparent;
   color: #28a745;
 }
 
-.webkit-sassui-button[data-theme=success][data-outline=true]:active {
+.webkit-sassui-button[data-color=success][data-outline=true]:active {
   color: #ffffff;
   background: #34ce57;
 }
 
-.webkit-sassui-button[data-theme=danger] {
+.webkit-sassui-button[data-color=danger] {
   background: #dc3545;
   color: #000000;
   border: 1px solid #dc3545;
 }
 
-.webkit-sassui-button[data-theme=danger]:active {
+.webkit-sassui-button[data-color=danger]:active {
   background: #bd2130;
 }
 
-.webkit-sassui-button[data-theme=danger][data-outline=true] {
+.webkit-sassui-button[data-color=danger]:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2em rgba(220, 53, 69, 0.5);
+}
+
+.webkit-sassui-button[data-color=danger][data-outline=true] {
   background: transparent;
   color: #dc3545;
 }
 
-.webkit-sassui-button[data-theme=danger][data-outline=true]:active {
+.webkit-sassui-button[data-color=danger][data-outline=true]:active {
   color: #000000;
   background: #e4606d;
 }
 
-.webkit-sassui-button[data-theme=warning] {
+.webkit-sassui-button[data-color=warning] {
   background: #ffc107;
   color: #000000;
   border: 1px solid #ffc107;
 }
 
-.webkit-sassui-button[data-theme=warning]:active {
+.webkit-sassui-button[data-color=warning]:active {
   background: #d39e00;
 }
 
-.webkit-sassui-button[data-theme=warning][data-outline=true] {
+.webkit-sassui-button[data-color=warning]:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2em rgba(255, 193, 7, 0.5);
+}
+
+.webkit-sassui-button[data-color=warning][data-outline=true] {
   background: transparent;
   color: #ffc107;
 }
 
-.webkit-sassui-button[data-theme=warning][data-outline=true]:active {
+.webkit-sassui-button[data-color=warning][data-outline=true]:active {
   color: #000000;
   background: #ffce3a;
 }
 
-.webkit-sassui-button[data-theme=info] {
+.webkit-sassui-button[data-color=info] {
   background: #17a2b8;
   color: #ffffff;
   border: 1px solid #17a2b8;
 }
 
-.webkit-sassui-button[data-theme=info]:active {
+.webkit-sassui-button[data-color=info]:active {
   background: #117a8b;
 }
 
-.webkit-sassui-button[data-theme=info][data-outline=true] {
+.webkit-sassui-button[data-color=info]:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2em rgba(23, 162, 184, 0.5);
+}
+
+.webkit-sassui-button[data-color=info][data-outline=true] {
   background: transparent;
   color: #17a2b8;
 }
 
-.webkit-sassui-button[data-theme=info][data-outline=true]:active {
+.webkit-sassui-button[data-color=info][data-outline=true]:active {
   color: #ffffff;
   background: #1fc8e3;
 }
 
-.webkit-sassui-button[data-theme=light] {
+.webkit-sassui-button[data-color=light] {
   background: #f8f9fa;
   color: #000000;
   border: 1px solid #f8f9fa;
 }
 
-.webkit-sassui-button[data-theme=light]:active {
+.webkit-sassui-button[data-color=light]:active {
   background: #dae0e5;
 }
 
-.webkit-sassui-button[data-theme=light][data-outline=true] {
+.webkit-sassui-button[data-color=light]:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2em rgba(248, 249, 250, 0.5);
+}
+
+.webkit-sassui-button[data-color=light][data-outline=true] {
   background: transparent;
   color: #f8f9fa;
 }
 
-.webkit-sassui-button[data-theme=light][data-outline=true]:active {
+.webkit-sassui-button[data-color=light][data-outline=true]:active {
   color: #000000;
   background: white;
 }
 
-.webkit-sassui-button[data-theme=dark] {
+.webkit-sassui-button[data-color=dark] {
   background: #343a40;
   color: #ffffff;
   border: 1px solid #343a40;
 }
 
-.webkit-sassui-button[data-theme=dark]:active {
+.webkit-sassui-button[data-color=dark]:active {
   background: #1d2124;
 }
 
-.webkit-sassui-button[data-theme=dark][data-outline=true] {
+.webkit-sassui-button[data-color=dark]:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2em rgba(52, 58, 64, 0.5);
+}
+
+.webkit-sassui-button[data-color=dark][data-outline=true] {
   background: transparent;
   color: #343a40;
 }
 
-.webkit-sassui-button[data-theme=dark][data-outline=true]:active {
+.webkit-sassui-button[data-color=dark][data-outline=true]:active {
   color: #ffffff;
   background: #4b545c;
 }
