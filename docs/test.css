@@ -10,6 +10,11 @@
   border-radius: .4em;
 }
 
+.webkit-sassui-button[disabled] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 .webkit-sassui-button[data-round=true] {
   border-radius: 100px;
 }

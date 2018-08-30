@@ -53,6 +53,10 @@ $webkit-sassui-button-options: (
   padding:$padding;
   transition: all $duration;
 
+  &[disabled]{
+    opacity: 0.6;
+    pointer-events: none;
+  }
 
   //round:
   border-radius: .4em;
