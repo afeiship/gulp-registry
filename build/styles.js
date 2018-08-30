@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
   'use strict';
 
@@ -10,11 +10,11 @@
   });
 
   //styles
-  gulp.task('test',function() {
-    return gulp.src('test/test.scss')
-      .pipe($.sass({outputStyle: 'expanded'}).on('error', $.sass.logError))
-      .pipe(gulp.dest('test'));
+  gulp.task('styles', function () {
+    return gulp.src('src/*.scss')
+      .pipe(gulp.dest('dist'))
+      .pipe($.sass())
+      .pipe(gulp.dest('dist'));
   });
-
 
 }());

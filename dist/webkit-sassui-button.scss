@@ -1,8 +1,85 @@
 /*webkit-sassui-button Start*/
-@mixin webkit-sassui-button($inColor:#666,$inBgColor:#E1F0FF,$inBorderColor:#009FF0,$inRadius:2px) {
-  background: $inBgColor;
-  border: 1px solid $inBorderColor;
-  border-radius: $inRadius;
-  color:$inColor;
+$webkit-sassui-button-options: (
+  padding: 1em 2em,
+  theme-map:(
+    primary:#387ef5,
+    secondary:#ff2d55,
+    wechat:#1aad19
+  ),
+  size-map:(
+    small: 10px,
+    normal: 16px,
+    large: 20px,
+  ),
+  amount-map:(
+    darkent: 10%,
+    lighten: 10%
+  )
+)!default;
+// CAN NOT use default, maybe is node-sass's bug:
+
+.webkit-sassui-button{
+
+  $padding: map-get($map: $webkit-sassui-button-options, $key: padding );
+  $theme-map: map-get($map: $webkit-sassui-button-options, $key: theme-map );
+  $size-map: map-get($map: $webkit-sassui-button-options, $key: size-map );
+  $amount-map: map-get($map: $webkit-sassui-button-options, $key: amount-map );
+
+  //reset:
+  border:none;
+  background: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  &:focus{
+    outline: none;
+  }
+  padding:$padding;
+
+  //round:
+  border-radius: .4em;
+  &[data-round=true]{
+    border-radius: 100px;
+  }
+
+  &[data-round=false]{
+    border-radius: 0;
+  }
+
+  //full:
+  &[data-full=true]{
+    display: block;
+    width:100%;
+  }
+
+  //size:
+  @each $size, $font-size in $size-map{
+    &[data-size=#{$size}]{
+      font-size:$font-size;
+    }
+  }
+
+  // theme:
+  @each $name,$theme in $theme-map{
+    &[data-theme=#{$name}]{
+      background: $theme;
+      color:#fff;
+      border:1px solid $theme;
+      &:active{
+        background: darken($theme,8%);
+      }
+
+      &[data-outline=true]{
+        background: #fff;
+        color:$theme;
+
+        &:active{
+          color:#fff;
+          background: lighten($theme,8%);
+        }
+      }
+    }
+  }
+
 }
+
 /*webkit-sassui-button End*/
