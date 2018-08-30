@@ -45,7 +45,7 @@
 }
 
 .webkit-sassui-button[data-theme=primary]:active {
-  background: #1165f3;
+  background: #0c60ee;
 }
 
 .webkit-sassui-button[data-theme=primary][data-outline=true] {
@@ -55,7 +55,7 @@
 
 .webkit-sassui-button[data-theme=primary][data-outline=true]:active {
   color: #fff;
-  background: #5f97f7;
+  background: #699df7;
 }
 
 .webkit-sassui-button[data-theme=secondary] {
@@ -65,7 +65,7 @@
 }
 
 .webkit-sassui-button[data-theme=secondary]:active {
-  background: #ff0434;
+  background: #f9002f;
 }
 
 .webkit-sassui-button[data-theme=secondary][data-outline=true] {
@@ -75,7 +75,7 @@
 
 .webkit-sassui-button[data-theme=secondary][data-outline=true]:active {
   color: #fff;
-  background: #ff5676;
+  background: #ff607e;
 }
 
 .webkit-sassui-button[data-theme=wechat] {
@@ -85,7 +85,7 @@
 }
 
 .webkit-sassui-button[data-theme=wechat]:active {
-  background: #158914;
+  background: #138013;
 }
 
 .webkit-sassui-button[data-theme=wechat][data-outline=true] {
@@ -95,7 +95,7 @@
 
 .webkit-sassui-button[data-theme=wechat][data-outline=true]:active {
   color: #fff;
-  background: #1fd11e;
+  background: #21da1f;
 }
 
 /*webkit-sassui-button End*/

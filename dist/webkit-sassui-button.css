@@ -27,36 +27,36 @@
     color: #fff;
     border: 1px solid #387ef5; }
     .webkit-sassui-button[data-theme=primary]:active {
-      background: #1165f3; }
+      background: #0c60ee; }
     .webkit-sassui-button[data-theme=primary][data-outline=true] {
       background: #fff;
       color: #387ef5; }
       .webkit-sassui-button[data-theme=primary][data-outline=true]:active {
         color: #fff;
-        background: #5f97f7; }
+        background: #699df7; }
   .webkit-sassui-button[data-theme=secondary] {
     background: #ff2d55;
     color: #fff;
     border: 1px solid #ff2d55; }
     .webkit-sassui-button[data-theme=secondary]:active {
-      background: #ff0434; }
+      background: #f9002f; }
     .webkit-sassui-button[data-theme=secondary][data-outline=true] {
       background: #fff;
       color: #ff2d55; }
       .webkit-sassui-button[data-theme=secondary][data-outline=true]:active {
         color: #fff;
-        background: #ff5676; }
+        background: #ff607e; }
   .webkit-sassui-button[data-theme=wechat] {
     background: #1aad19;
     color: #fff;
     border: 1px solid #1aad19; }
     .webkit-sassui-button[data-theme=wechat]:active {
-      background: #158914; }
+      background: #138013; }
     .webkit-sassui-button[data-theme=wechat][data-outline=true] {
       background: #fff;
       color: #1aad19; }
       .webkit-sassui-button[data-theme=wechat][data-outline=true]:active {
         color: #fff;
-        background: #1fd11e; }
+        background: #21da1f; }
 
 /*webkit-sassui-button End*/
