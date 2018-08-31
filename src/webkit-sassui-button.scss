@@ -22,7 +22,7 @@ $webkit-sassui-button-options: (
     lighten: 6%
   )
 )!default;
-// CAN NOT use default, maybe is node-sass's bug:
+
 
 @function set-button-text-color($color) {
   @if (lightness($color) > 50) {
