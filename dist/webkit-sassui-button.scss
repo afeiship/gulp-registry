@@ -1,25 +1,25 @@
 /*webkit-sassui-button Start*/
 $webkit-sassui-button-options: (
-  padding: 1em 2em,
+  padding: 1.2em 2em,
   duration: 300ms,
   color-map:(
     primary:#007bff,
     secondary:#6c757d,
     success:#28a745,
-    danger:#dc3545,
+    danger:#dc052e,
     warning:#ffc107,
     info:#17a2b8,
-    light:#f8f9fa,
+    light:#dae0e5,
     dark:#343a40
   ),
   size-map:(
-    small: 10px,
+    small: 8px,
     normal: 16px,
     large: 20px,
   ),
   amount-map:(
-    darken: 10%,
-    lighten: 10%
+    darken: 8%,
+    lighten: 6%
   )
 )!default;
 // CAN NOT use default, maybe is node-sass's bug:
@@ -97,10 +97,13 @@ $webkit-sassui-button-options: (
         box-shadow: 0 0 0 0.2em rgba($color,.5);
       }
 
-
       &[data-outline=true]{
         background: transparent;
-        color:$color;
+        @if $name == light {
+          color: $text-color;
+        }@else{
+          color: $color;
+        }
 
         &:active{
           color:$text-color;
@@ -109,7 +112,6 @@ $webkit-sassui-button-options: (
       }
     }
   }
-
 }
 
 /*webkit-sassui-button End*/
