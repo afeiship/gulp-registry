@@ -1,5 +1,5 @@
 # web-http-schema
-> Http schema for web based on next-fetch..
+> Http schema for web based on next-fetch.
 
 [![version][version-image]][version-url]
 [![license][license-image]][license-url]
