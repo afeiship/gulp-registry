@@ -11,6 +11,36 @@
 npm install @jswork/web-http-schema
 ```
 
+## usage
+```js
+import httpSchema from '@jswork/web-http-schema';
+
+const options = {
+  transformResponse: ({ data }) => {
+    return data;
+  }
+};
+
+const $api = httpSchema(
+  {
+    host: 'https://api.github.com',
+    request: ['', 'json'],
+    items: [
+      {
+        items: {
+          login: ['get', '/users/afeiship']
+        }
+      }
+    ]
+  },
+  options
+);
+
+$api.login().then((res) => {
+  // res
+});
+```
+
 ## license
 Code released under [the MIT license](https://github.com/afeiship/web-http-schema/blob/master/LICENSE.txt).
 
