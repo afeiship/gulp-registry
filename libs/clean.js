@@ -11,7 +11,7 @@ module.exports = class extends DefaultRegistry {
   init(taker) {
     const buildDir = this.options.buildDir;
     taker.task('clean', function () {
-      return del([buildDir]);
+      return del(buildDir);
     });
   }
 };
