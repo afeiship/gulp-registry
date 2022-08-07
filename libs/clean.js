@@ -1,8 +1,6 @@
 const DefaultRegistry = require('undertaker-registry');
 const del = require('del');
-const defaults = {
-  buildDir: './dist',
-};
+const defaults = { buildDir: './dist' };
 
 module.exports = class extends DefaultRegistry {
   constructor(inOptions) {
