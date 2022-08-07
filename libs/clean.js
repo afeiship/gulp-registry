@@ -1,5 +1,6 @@
 const DefaultRegistry = require('undertaker-registry');
 const fs = require('fs');
+const del = require('del');
 const defaults = {
   buildDir: './dist',
 };
