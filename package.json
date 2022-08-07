@@ -16,8 +16,7 @@
   "generator": "@jswork/generator-github",
   "devDependencies": {
     "prettier": "^2.6.2",
-    "release-it": "^15.2.0",
-    "undertaker-registry": "^2.0.0"
+    "release-it": "^15.2.0"
   },
   "scripts": {
     "release": "release-it"
@@ -28,6 +27,7 @@
     "tasks"
   ],
   "dependencies": {
-    "del": "^6.1.1"
+    "del": "^6.1.1",
+    "undertaker-registry": "^2.0.0"
   }
 }
