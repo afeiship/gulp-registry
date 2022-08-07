@@ -5,6 +5,7 @@ const defaults = {
 
 module.exports = class extends DefaultRegistry {
   constructor(inOptions) {
+    super(inOptions);
     this.options = { ...defaults, ...inOptions };
   }
 

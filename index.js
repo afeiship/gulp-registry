@@ -1,3 +1,3 @@
 module.exports = {
-  CleanRegistry: require('./registry/clean'),
+  CleanRegistry: require('./libs/clean'),
 };

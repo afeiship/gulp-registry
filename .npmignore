@@ -12,6 +12,7 @@ rollup.config.js
 .editorconfig
 .prettierrc
 .prettierignore
+.release-it.json
 
 # vscode
 .vscode
