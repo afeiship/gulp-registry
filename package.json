@@ -26,5 +26,8 @@
     "gulp",
     "registry",
     "tasks"
-  ]
+  ],
+  "dependencies": {
+    "del": "^6.1.1"
+  }
 }
