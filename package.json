@@ -30,6 +30,7 @@
     "del": "^6.1.1",
     "gulp-dart-sass": "^1.0.2",
     "gulp-postcss": "^9.0.1",
+    "gulp-sass-glob": "^1.1.0",
     "undertaker-registry": "^2.0.0"
   }
 }
