@@ -1,6 +1,6 @@
 const DefaultRegistry = require('undertaker-registry');
 const del = require('del');
-const defaults = { target: './dist' };
+const defaults = { dest: './dist' };
 
 module.exports = class extends DefaultRegistry {
   constructor(inOptions) {
@@ -9,9 +9,9 @@ module.exports = class extends DefaultRegistry {
   }
 
   init(taker) {
-    const { target } = this.options;
+    const { dest } = this.options;
     taker.task('clean', function () {
-      return del(target);
+      return del(dest);
     });
   }
 };
