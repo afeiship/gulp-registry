@@ -12,7 +12,11 @@ module.exports = class extends DefaultRegistry {
   init(taker) {
     const { src, dst } = this.options;
     taker.task('tailwind', function () {
-      return taker.src(src).pipe(sass()).pipe(postcss()).pipe(gulp.dest(dst));
+      return taker
+        .src(src)
+        .pipe(sass())
+        .pipe(postcss())
+        .pipe(taker.dest(dst));
     });
   }
 };
