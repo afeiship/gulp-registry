@@ -1,5 +1,5 @@
 const DefaultRegistry = require('undertaker-registry');
-const jsonMinify = require('gulp-json-minify');
+const checkModules = require('@jswork/check-modules');
 const defaults = { src: './src/*.json', dest: 'dist' };
 
 module.exports = class extends DefaultRegistry {
@@ -11,10 +11,9 @@ module.exports = class extends DefaultRegistry {
   init(taker) {
     const { src, dest } = this.options;
     taker.task('json:min', function () {
-      return taker
-        .src(src)
-        .pipe(jsonMinify())
-        .pipe(taker.dest(dest));
+      if (!checkModules(['gulp-json-minify'])) return Promise.resolve();
+      const jsonMinify = require('gulp-json-minify');
+      return taker.src(src).pipe(jsonMinify()).pipe(taker.dest(dest));
     });
   }
 };
