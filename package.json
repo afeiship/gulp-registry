@@ -28,6 +28,7 @@
     "tasks"
   ],
   "dependencies": {
+    "@jswork/check-modules": "^1.0.2",
     "del": "^6.1.1",
     "gulp-dart-sass": "^1.0.2",
     "gulp-json-minify": "^1.2.2",
