@@ -3,9 +3,8 @@
     "requireCleanWorkingDir": false
   },
   "hooks": {
-    "after:init": [
-      "t2k"
-    ]
+    "after:init": ["t2k"],
+    "after:release": ["cnpm sync `npm pkg get name | tr -d '\"'`"]
   },
   "github": {
     "release": true,
