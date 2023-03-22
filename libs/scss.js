@@ -3,6 +3,7 @@ const checkModules = require('@jswork/check-modules');
 const defaults = { src: 'src/*.scss', dst: './dist' };
 const requiredModules = [
   'sass',
+  'postcss',
   'gulp-dart-sass',
   'gulp-rename',
   'gulp-postcss',
@@ -17,7 +18,8 @@ module.exports = class extends DefaultRegistry {
   }
 
   init(taker) {
-    const { dst } = this.options;
+    const { src, dst } = this.options;
+
     taker.task('sass', function () {
       if (!checkModules(requiredModules)) return Promise.resolve();
       const sass = require('gulp-dart-sass');
@@ -25,12 +27,12 @@ module.exports = class extends DefaultRegistry {
       const postcss = require('gulp-postcss');
       const autoprefixer = require('autoprefixer');
       const cssnano = require('cssnano');
-      const { src, dst } = taker;
-      return src('./src/*.scss')
+      return taker
+        .src(src)
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss([autoprefixer(), cssnano()]))
         .pipe(rename({ extname: '.min.css' }))
-        .pipe(dest(dst));
+        .pipe(taker.dest(dst));
     });
   }
 };
