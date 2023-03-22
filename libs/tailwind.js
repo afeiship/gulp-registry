@@ -1,8 +1,6 @@
 const DefaultRegistry = require('undertaker-registry');
-const postcss = require('gulp-postcss');
-const sass = require('gulp-dart-sass');
-const sassGlob = require('gulp-sass-glob');
 const defaults = { src: './src/index.scss', dest: '.' };
+const requiredModules = ['gulp-postcss', 'gulp-dart-sass', 'gulp-sass-glob'];
 
 module.exports = class extends DefaultRegistry {
   constructor(inOptions) {
@@ -13,6 +11,13 @@ module.exports = class extends DefaultRegistry {
   init(taker) {
     const { src, dest } = this.options;
     taker.task('tailwind', function () {
+      const checkModules = require('@jswork/check-modules');
+      if (!checkModules(requiredModules)) return Promise.resolve();
+
+      const postcss = require('gulp-postcss');
+      const sass = require('gulp-dart-sass');
+      const sassGlob = require('gulp-sass-glob');
+
       return taker
         .src(src)
         .pipe(sassGlob())
