@@ -1,6 +1,6 @@
 const DefaultRegistry = require('undertaker-registry');
 const checkModules = require('@jswork/check-modules');
-const defaults = { dest: './dist' };
+const defaults = { dst: './dist' };
 
 module.exports = class extends DefaultRegistry {
   constructor(inOptions) {
@@ -9,11 +9,11 @@ module.exports = class extends DefaultRegistry {
   }
 
   init(taker) {
-    const { dest } = this.options;
+    const { dst } = this.options;
     taker.task('clean', function () {
       if (!checkModules(['del'])) return Promise.resolve();
       const del = require('del');
-      return del(dest);
+      return del(dst);
     });
   }
 };

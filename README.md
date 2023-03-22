@@ -10,8 +10,8 @@ npm i @jswork/gulp-registry -D
 ```js
 const gulp = require("gulp");
 const { TailwindRegistry, CleanRegistry } = require("@jswork/gulp-registry");
-const reg1 = new TailwindRegistry({src: "./styles/index.scss", dst: "./public/",});
-const reg2 = new CleanRegistry({ target: "./public/" });
+const reg1 = new TailwindRegistry({ src: "./styles/index.scss", dst: "./public/" });
+const reg2 = new CleanRegistry({ dst: "./public/" });
 
 [reg1, reg2].forEach((reg) => gulp.registry(reg));
 ```
