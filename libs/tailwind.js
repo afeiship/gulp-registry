@@ -1,5 +1,5 @@
 const DefaultRegistry = require('undertaker-registry');
-const defaults = { src: './src/index.scss', dest: '.' };
+const defaults = { src: './src/index.scss', dst: '.' };
 const requiredModules = ['gulp-postcss', 'gulp-dart-sass', 'gulp-sass-glob'];
 
 module.exports = class extends DefaultRegistry {
@@ -9,7 +9,7 @@ module.exports = class extends DefaultRegistry {
   }
 
   init(taker) {
-    const { src, dest } = this.options;
+    const { src, dst } = this.options;
     taker.task('tailwind', function () {
       const checkModules = require('@jswork/check-modules');
       if (!checkModules(requiredModules)) return Promise.resolve();
@@ -23,7 +23,7 @@ module.exports = class extends DefaultRegistry {
         .pipe(sassGlob())
         .pipe(sass())
         .pipe(postcss())
-        .pipe(taker.dest(dest));
+        .pipe(taker.dest(dst));
     });
   }
 };
