@@ -1,6 +1,6 @@
 {
   "name": "@jswork/gulp-registry",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "My common gulp registry.",
   "homepage": "https://js.work",
   "main": "index.js",
