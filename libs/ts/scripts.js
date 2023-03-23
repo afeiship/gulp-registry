@@ -27,7 +27,7 @@ module.exports = class extends DefaultRegistry {
     const opts = tsconfig.compilerOptions;
 
     // cjs for nodejs
-    taker.task('scripts:cjs', function () {
+    taker.task('ts:scripts:cjs', function () {
       return taker
         .src(src)
         .pipe(replace('export default ', 'export = '))
@@ -37,7 +37,7 @@ module.exports = class extends DefaultRegistry {
     });
 
     // esm for browser
-    taker.task('scripts:esm', function () {
+    taker.task('ts:scripts:esm', function () {
       return taker
         .src(src)
         .pipe(pkgHeader())
@@ -47,7 +47,7 @@ module.exports = class extends DefaultRegistry {
     });
 
     // typing for ts
-    taker.task('scripts:typing', function () {
+    taker.task('ts:scripts:typing', function () {
       return taker
         .src(src)
         .pipe(pkgHeader())
@@ -56,6 +56,6 @@ module.exports = class extends DefaultRegistry {
     });
 
     // main task
-    taker.task('ts:scripts', taker.series('scripts:cjs', 'scripts:esm', 'scripts:typing'));
+    taker.task('ts:scripts', taker.series('ts:scripts:cjs', 'ts:scripts:esm', 'ts:scripts:typing'));
   }
 };

@@ -8,4 +8,5 @@ module.exports = {
   // generators
   NxScripts: require('./libs/nx/scripts'),
   TsScripts: require('./libs/ts/scripts'),
+  EsbScripts: require('./libs/ts/esb.scripts'),
 };
