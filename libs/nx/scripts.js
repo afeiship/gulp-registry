@@ -9,7 +9,6 @@ const requiredModules = [
   'gulp-prettier',
   'gulp-replace',
   'gulp-rename',
-  'gulp-load-plugins',
   'uglify-save-license',
 ];
 
@@ -24,18 +23,21 @@ module.exports = class extends DefaultRegistry {
     if (!checkModules(requiredModules)) return Promise.resolve();
 
     const saveLicense = require('uglify-save-license');
-    const $ = require('gulp-load-plugins')({
-      pattern: ['gulp-*', 'gulp.*', 'del', '@jswork/gulp-*'],
-    });
+    const insert = require('gulp-insert');
+    const prettier = require('gulp-prettier');
+    const pkgHeader = require('@jswork/gulp-pkg-header');
+    const uglify = require('gulp-uglify');
+    const replace = require('gulp-replace');
+    const rename = require('gulp-rename');
 
     taker.task('nx:scripts.cjs', function () {
       return taker
         .src(src)
-        .pipe($.insert.wrap(`(function () {`, '})();'))
-        .pipe($.prettier())
-        .pipe($.jswork.pkgHeader())
+        .pipe(insert.wrap(`(function () {`, '})();'))
+        .pipe(prettier())
+        .pipe(pkgHeader())
         .pipe(taker.dest(dst))
-        .pipe($.uglify({ output: { comments: saveLicense } }));
+        .pipe(uglify({ output: { comments: saveLicense } }));
     });
 
     taker.task('nx:scripts.esm', () => {
@@ -43,10 +45,10 @@ module.exports = class extends DefaultRegistry {
       const exports = `export default nx.${expName};`;
       return taker
         .src(src)
-        .pipe($.jswork.pkgHeader())
-        .pipe($.replace('global || this || window', 'global || this'))
-        .pipe($.replace(/if \(typeof module !== 'undefined' && module\.exports.*\s+.*\s+}/, exports))
-        .pipe($.rename({ extname: '.esm.js' }))
+        .pipe(pkgHeader())
+        .pipe(replace('global || this || window', 'global || this'))
+        .pipe(replace(/if \(typeof module !== 'undefined' && module\.exports.*\s+.*\s+}/, exports))
+        .pipe(rename({ extname: '.esm.js' }))
         .pipe(taker.dest(dst));
     });
 
