@@ -1,6 +1,6 @@
 {
   "name": "@jswork/gulp-registry",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "My common gulp registry.",
   "homepage": "https://js.work",
   "main": "index.js",
@@ -23,7 +23,8 @@
   "keywords": [
     "gulp",
     "registry",
-    "tasks"
+    "tasks",
+    "repo"
   ],
   "dependencies": {
     "@jswork/check-modules": "^1.0.2",
