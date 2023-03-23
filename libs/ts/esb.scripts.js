@@ -51,7 +51,7 @@ module.exports = class extends DefaultRegistry {
       ],
     };
 
-    tasker.task('esb:scripts:cjs', function () {
+    taker.task('esb:scripts:cjs', function () {
       return taker
         .src(src)
         .pipe(gulpEsbuild({ ...shared, format: 'cjs', outfile: 'index.js' }))
@@ -59,7 +59,7 @@ module.exports = class extends DefaultRegistry {
         .pipe(taker.dest(dst));
     });
 
-    tasker.task('esb:scripts:esm', function () {
+    taker.task('esb:scripts:esm', function () {
       return taker
         .src(src)
         .pipe(gulpEsbuild({ ...shared, format: 'esm', outfile: 'index.esm.js' }))
