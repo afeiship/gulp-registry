@@ -54,16 +54,16 @@ module.exports = class extends DefaultRegistry {
     tasker.task('esb:scripts:cjs', function () {
       return taker
         .src(src)
-        .pipe(pkgHeader())
         .pipe(gulpEsbuild({ ...shared, format: 'cjs', outfile: 'index.js' }))
+        .pipe(pkgHeader())
         .pipe(taker.dest(dst));
     });
 
     tasker.task('esb:scripts:esm', function () {
       return taker
         .src(src)
-        .pipe(pkgHeader())
         .pipe(gulpEsbuild({ ...shared, format: 'esm', outfile: 'index.esm.js' }))
+        .pipe(pkgHeader())
         .pipe(taker.dest(dst));
     });
 
@@ -71,12 +71,15 @@ module.exports = class extends DefaultRegistry {
     taker.task('esb:scripts:typing', function () {
       return taker
         .src(src)
-        .pipe(pkgHeader())
         .pipe(gulpTs({ ...opts, declaration: true }))
+        .pipe(pkgHeader())
         .pipe(taker.dest(dst));
     });
 
     // main task
-    taker.task('ts:scripts', taker.series('esb:scripts:cjs', 'esb:scripts:esm', 'esb:scripts:typing'));
+    taker.task(
+      'esb:scripts',
+      taker.series('esb:scripts:cjs', 'esb:scripts:esm', 'esb:scripts:typing')
+    );
   }
 };
