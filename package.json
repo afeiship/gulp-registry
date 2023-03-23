@@ -27,6 +27,7 @@
   ],
   "dependencies": {
     "@jswork/check-modules": "^1.0.2",
+    "capitalize": "^2.0.4",
     "undertaker-registry": "^2.0.0"
   }
 }

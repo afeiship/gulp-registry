@@ -20,3 +20,5 @@ rollup.config.js
 .github
 api
 docs
+
+pnpm-lock.yaml
