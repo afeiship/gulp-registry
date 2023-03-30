@@ -33,21 +33,15 @@ module.exports = class extends DefaultRegistry {
     const opts = tsconfig.compilerOptions;
 
     const shared = {
-      entryPoints: ['src/index.ts'],
       bundle: true,
       minify: true,
       platform: 'node',
       sourcemap: true,
       target: 'node14',
       plugins: [
-        clean({
-          patterns: ['./dist/*'],
-        }),
+        clean({ patterns: ['./dist/*'] }),
         nodeExternalsPlugin(),
-        replace({
-          'export default ': 'export = ',
-          '__VERSION__': pkg.version,
-        }),
+        replace({ __VERSION__: pkg.version }),
       ],
     };
 
