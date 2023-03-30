@@ -2,12 +2,7 @@ const DefaultRegistry = require('undertaker-registry');
 const checkModules = require('@jswork/check-modules');
 const defaults = { src: 'src/**/*.ts', dst: './dist' };
 const path = require('path');
-const requiredModules = [
-  '@jswork/gulp-pkg-header',
-  'gulp-replace',
-  'gulp-rename',
-  'gulp-typescript',
-];
+const requiredModules = ['@jswork/gulp-pkg-header', 'gulp-rename', 'gulp-typescript'];
 
 module.exports = class extends DefaultRegistry {
   constructor(inOptions) {
@@ -20,7 +15,6 @@ module.exports = class extends DefaultRegistry {
     if (!checkModules(requiredModules)) return Promise.resolve();
 
     const pkgHeader = require('@jswork/gulp-pkg-header');
-    const replace = require('gulp-replace');
     const rename = require('gulp-rename');
     const gulpTs = require('gulp-typescript');
     const tsconfig = require(path.join(process.cwd(), 'tsconfig.json'));
@@ -30,7 +24,6 @@ module.exports = class extends DefaultRegistry {
     taker.task('ts:scripts:cjs', function () {
       return taker
         .src(src)
-        .pipe(replace('export default ', 'export = '))
         .pipe(pkgHeader())
         .pipe(gulpTs({ ...opts, module: 'commonjs' }))
         .pipe(taker.dest(dst));
