@@ -4,7 +4,7 @@ const capitalize = require('capitalize');
 const defaults = { src: 'src/*.js', dst: './dist', name: 'qs', classify: false };
 const requiredModules = [
   '@jswork/gulp-pkg-header',
-  'gulp-insert',
+  'gulp-babel',
   'gulp-uglify',
   'gulp-prettier',
   'gulp-replace',
@@ -23,31 +23,27 @@ module.exports = class extends DefaultRegistry {
     if (!checkModules(requiredModules)) return Promise.resolve();
 
     const saveLicense = require('uglify-save-license');
-    const insert = require('gulp-insert');
     const prettier = require('gulp-prettier');
     const pkgHeader = require('@jswork/gulp-pkg-header');
-    const uglify = require('gulp-uglify');
+    const babel = require('gulp-babel');
     const replace = require('gulp-replace');
     const rename = require('gulp-rename');
+    const uglify = require('gulp-uglify');
 
     taker.task('nx:scripts.cjs', function () {
       return taker
         .src(src)
-        .pipe(insert.wrap(`(function () {`, '})();'))
-        .pipe(prettier())
+        .pipe(babel())
         .pipe(pkgHeader())
-        .pipe(taker.dest(dst))
+        .pipe(prettier())
+        .pipe(taker.dest('dist'))
         .pipe(uglify({ output: { comments: saveLicense } }));
     });
 
     taker.task('nx:scripts.esm', () => {
-      const expName = classify ? capitalize(name) : name;
-      const exports = `export default nx.${expName};`;
       return taker
         .src(src)
         .pipe(pkgHeader())
-        .pipe(replace('global || this || window', 'global || this'))
-        .pipe(replace(/if \(typeof module !== 'undefined' && module\.exports.*\s+.*\s+}/, exports))
         .pipe(rename({ extname: '.esm.js' }))
         .pipe(taker.dest(dst));
     });
