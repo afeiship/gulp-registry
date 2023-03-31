@@ -1,7 +1,6 @@
 const DefaultRegistry = require('undertaker-registry');
 const checkModules = require('@jswork/check-modules');
-const capitalize = require('capitalize');
-const defaults = { src: 'src/*.js', dst: './dist', name: 'qs', classify: false };
+const defaults = { src: 'src/*.js', dst: './dist' };
 const requiredModules = [
   '@jswork/gulp-pkg-header',
   'gulp-babel',
@@ -19,7 +18,7 @@ module.exports = class extends DefaultRegistry {
   }
 
   init(taker) {
-    const { src, dst, name, classify } = this.options;
+    const { src, dst } = this.options;
     if (!checkModules(requiredModules)) return Promise.resolve();
 
     const saveLicense = require('uglify-save-license');
