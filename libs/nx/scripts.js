@@ -6,7 +6,6 @@ const requiredModules = [
   'gulp-babel',
   'gulp-uglify',
   'gulp-prettier',
-  'gulp-replace',
   'gulp-rename',
   'uglify-save-license',
 ];
@@ -25,7 +24,6 @@ module.exports = class extends DefaultRegistry {
     const prettier = require('gulp-prettier');
     const pkgHeader = require('@jswork/gulp-pkg-header');
     const babel = require('gulp-babel');
-    const replace = require('gulp-replace');
     const rename = require('gulp-rename');
     const uglify = require('gulp-uglify');
 
