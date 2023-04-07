@@ -5,6 +5,7 @@ const { join } = require('path');
 const requiredModules = [
   '@jswork/gulp-pkg-header',
   'gulp-esbuild',
+  'gulp-rename',
   'gulp-typescript',
   'esbuild-node-externals',
   'esbuild-plugin-clean',
@@ -24,6 +25,7 @@ module.exports = class extends DefaultRegistry {
     const pkgHeader = require('@jswork/gulp-pkg-header');
     const gulpTs = require('gulp-typescript');
     const gulpEsbuild = require('gulp-esbuild');
+    const rename = require('gulp-rename');
     const { nodeExternalsPlugin } = require('esbuild-node-externals');
     const { clean } = require('esbuild-plugin-clean');
     const { replace } = require('esbuild-plugin-replace');
@@ -33,6 +35,7 @@ module.exports = class extends DefaultRegistry {
     const opts = tsconfig.compilerOptions;
 
     const shared = {
+      outdir: '',
       bundle: true,
       minify: true,
       platform: 'node',
@@ -48,7 +51,7 @@ module.exports = class extends DefaultRegistry {
     taker.task('esb:scripts:cjs', function () {
       return taker
         .src(src)
-        .pipe(gulpEsbuild({ ...shared, format: 'cjs', outfile: 'index.js' }))
+        .pipe(gulpEsbuild({ ...shared, format: 'cjs' }))
         .pipe(pkgHeader())
         .pipe(taker.dest(dst));
     });
@@ -56,8 +59,9 @@ module.exports = class extends DefaultRegistry {
     taker.task('esb:scripts:esm', function () {
       return taker
         .src(src)
-        .pipe(gulpEsbuild({ ...shared, format: 'esm', outfile: 'index.esm.js' }))
+        .pipe(gulpEsbuild({ ...shared, format: 'esm' }))
         .pipe(pkgHeader())
+        .pipe(rename({ suffix: '.esm' }))
         .pipe(taker.dest(dst));
     });
 
