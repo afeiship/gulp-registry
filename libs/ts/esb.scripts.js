@@ -51,16 +51,16 @@ module.exports = class extends DefaultRegistry {
     taker.task('esb:scripts:cjs', function () {
       return taker
         .src(src)
-        .pipe(gulpEsbuild({ ...shared, format: 'cjs' }))
         .pipe(pkgHeader())
+        .pipe(gulpEsbuild({ ...shared, format: 'cjs' }))
         .pipe(taker.dest(dst));
     });
 
     taker.task('esb:scripts:esm', function () {
       return taker
         .src(src)
-        .pipe(gulpEsbuild({ ...shared, format: 'esm' }))
         .pipe(pkgHeader())
+        .pipe(gulpEsbuild({ ...shared, format: 'esm' }))
         .pipe(rename({ suffix: '.esm' }))
         .pipe(taker.dest(dst));
     });
