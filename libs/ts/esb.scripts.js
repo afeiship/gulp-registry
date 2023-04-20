@@ -69,8 +69,8 @@ module.exports = class extends DefaultRegistry {
     taker.task('esb:scripts:typing', function () {
       return taker
         .src(src)
-        .pipe(gulpTs({ ...opts, declaration: true }))
         .pipe(pkgHeader())
+        .pipe(gulpTs({ ...opts, declaration: true }))
         .pipe(taker.dest(dst));
     });
 
