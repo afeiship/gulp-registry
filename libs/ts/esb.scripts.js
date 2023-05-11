@@ -37,9 +37,9 @@ module.exports = class extends DefaultRegistry {
     const shared = {
       outdir: '',
       bundle: true,
-      minify: true,
+      minify: false,
       platform: 'node',
-      sourcemap: true,
+      sourcemap: false,
       target: 'node14',
       plugins: [
         clean({ patterns: ['./dist/*'] }),
