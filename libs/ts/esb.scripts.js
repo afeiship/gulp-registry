@@ -1,6 +1,6 @@
 const DefaultRegistry = require('undertaker-registry');
 const checkModules = require('@jswork/check-modules');
-const defaults = { src: 'src/**/*.ts', dst: './dist' };
+const defaults = { src: 'src/**/*.ts', dst: './dist', replacement: {} };
 const { join } = require('path');
 const requiredModules = [
   '@jswork/gulp-pkg-header',
@@ -19,7 +19,7 @@ module.exports = class extends DefaultRegistry {
   }
 
   init(taker) {
-    const { src, dst } = this.options;
+    const { src, dst, replacement } = this.options;
     if (!checkModules(requiredModules)) return Promise.resolve();
 
     const pkgHeader = require('@jswork/gulp-pkg-header');
@@ -44,7 +44,7 @@ module.exports = class extends DefaultRegistry {
       plugins: [
         clean({ patterns: ['./dist/*'] }),
         nodeExternalsPlugin(),
-        replace({ __VERSION__: pkg.version }),
+        replace({ __VERSION__: pkg.version, ...replacement }),
       ],
     };
 
