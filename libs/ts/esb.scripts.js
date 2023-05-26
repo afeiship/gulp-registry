@@ -39,7 +39,7 @@ module.exports = class extends DefaultRegistry {
       bundle: true,
       minify: false,
       platform: 'node',
-      sourcemap: false,
+      sourcemap: true,
       target: 'node14',
       plugins: [
         clean({ patterns: ['./dist/*'] }),
