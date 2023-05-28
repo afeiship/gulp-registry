@@ -1,5 +1,4 @@
 const DefaultRegistry = require('undertaker-registry');
-const execa = require('execa');
 const defaults = {};
 
 module.exports = class extends DefaultRegistry {
@@ -10,6 +9,7 @@ module.exports = class extends DefaultRegistry {
 
   init(taker) {
     taker.task('typescript:tsc', function () {
+      const execa = require('execa');
       return execa('tsc');
     });
   }
