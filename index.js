@@ -1,5 +1,6 @@
 module.exports = {
   CleanRegistry: require('./libs/clean'),
+  InlineSource: require('./libs/inline-source'),
   TailwindRegistry: require('./libs/tailwind'),
   JsonRegistry: require('./libs/json'),
   ScssRegistry: require('./libs/scss'),
