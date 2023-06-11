@@ -9,7 +9,7 @@ module.exports = class extends DefaultRegistry {
   }
 
   init(taker) {
-    const { src, dest } = this.options;
+    const { src, dst } = this.options;
     taker.task('json:min', function () {
       if (!checkModules(['gulp-json-minify'])) return Promise.resolve();
       const jsonMinify = require('gulp-json-minify');

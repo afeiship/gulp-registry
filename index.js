@@ -5,6 +5,7 @@ module.exports = {
   JsonRegistry: require('./libs/json'),
   ScssRegistry: require('./libs/scss'),
   Typescript: require('./libs/typescript'),
+  Webpack: require('./libs/webpack'),
 
   // generators
   NxScripts: require('./libs/nx/scripts'),
