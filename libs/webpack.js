@@ -12,10 +12,17 @@ module.exports = class extends DefaultRegistry {
   init(taker) {
     const { src, dst, config } = this.options;
 
-    taker.task('webpack', function () {
+    taker.task('webpack:dev', function () {
       if (!checkModules(requiredModules)) return Promise.resolve();
       const webpack = require('webpack-stream');
-      const wpkConfig = config || {};
+      const wpkConfig = config || { mode: 'development' };
+      return taker.src(src).pipe(webpack(wpkConfig)).pipe(taker.dest(dst));
+    });
+
+    taker.task('webpack:prod', function () {
+      if (!checkModules(requiredModules)) return Promise.resolve();
+      const webpack = require('webpack-stream');
+      const wpkConfig = config || { mode: 'production' };
       return taker.src(src).pipe(webpack(wpkConfig)).pipe(taker.dest(dst));
     });
   }
