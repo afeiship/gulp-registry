@@ -65,7 +65,7 @@ module.exports = class extends DefaultRegistry {
     });
 
     taker.task('ts:scripts:types', function () {
-      if (!fs.existsSync(srcTypes)) return Promise.resolve();
+      if (!fs.existsSync('src/types')) return Promise.resolve();
       return taker.src(srcTypes).pipe(taker.dest(dstTypes));
     });
 
