@@ -60,12 +60,10 @@ module.exports = class extends DefaultRegistry {
     // umd
     if (umdOptions) {
       if (!checkModules(umdModules)) return Promise.resolve();
-
       const umd = require('gulp-umd');
       const prettify = require('gulp-prettier');
 
       taker.task('ts:scripts:umd', function () {
-        if (!umdOptions) return Promise.resolve();
         return taker
           .src(src)
           .pipe(gulpTs({ ...opts, module: 'umd' }))
