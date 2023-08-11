@@ -60,6 +60,7 @@ module.exports = class extends DefaultRegistry {
     // umd
     if (umdOptions) {
       if (!checkModules(umdModules)) return Promise.resolve();
+
       const umd = require('gulp-umd');
       const prettify = require('gulp-jsbeautifier');
 
