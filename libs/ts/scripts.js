@@ -26,7 +26,7 @@ module.exports = class extends DefaultRegistry {
     const gulpTs = require('gulp-typescript');
     const tsconfig = require(path.join(process.cwd(), 'tsconfig.json'));
     const opts = tsconfig.compilerOptions;
-    const umdModules = ['gulp-umd', 'gulp-jsbeautifier'];
+    const umdModules = ['gulp-umd', 'gulp-prettier'];
 
     // cjs for nodejs
     taker.task('ts:scripts:cjs', function () {
@@ -62,7 +62,7 @@ module.exports = class extends DefaultRegistry {
       if (!checkModules(umdModules)) return Promise.resolve();
 
       const umd = require('gulp-umd');
-      const prettify = require('gulp-jsbeautifier');
+      const prettify = require('gulp-prettier');
 
       taker.task('ts:scripts:umd', function () {
         if (!umdOptions) return Promise.resolve();
