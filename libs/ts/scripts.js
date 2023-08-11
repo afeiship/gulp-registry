@@ -2,14 +2,7 @@ const fs = require('fs');
 const DefaultRegistry = require('undertaker-registry');
 const checkModules = require('@jswork/check-modules');
 const path = require('path');
-const requiredModules = [
-  '@jswork/gulp-pkg-header',
-  'gulp-rename',
-  'gulp-typescript',
-  'gulp-umd',
-  'gulp-jsbeautifier',
-];
-
+const requiredModules = ['@jswork/gulp-pkg-header', 'gulp-rename', 'gulp-typescript'];
 const defaults = {
   src: ['src/**/*.ts', 'src/**/*.d.ts'],
   srcTypes: 'src/types/*.d.ts',
@@ -35,6 +28,7 @@ module.exports = class extends DefaultRegistry {
     const prettify = require('gulp-jsbeautifier');
     const tsconfig = require(path.join(process.cwd(), 'tsconfig.json'));
     const opts = tsconfig.compilerOptions;
+    const umdModules = ['gulp-umd', 'gulp-jsbeautifier'];
 
     // cjs for nodejs
     taker.task('ts:scripts:cjs', function () {
@@ -66,16 +60,19 @@ module.exports = class extends DefaultRegistry {
     });
 
     // umd
-    taker.task('ts:scripts:umd', function () {
-      if (!umdOptions) return Promise.resolve();
-      return taker
-        .src(src)
-        .pipe(pkgHeader())
-        .pipe(gulpTs({ ...opts, module: 'umd' }))
-        .pipe(umd(umdOptions))
-        .pipe(prettify())
-        .pipe(taker.dest(dst));
-    });
+    if (umdOptions) {
+      if (!checkModules(umdModules)) return Promise.resolve();
+      taker.task('ts:scripts:umd', function () {
+        if (!umdOptions) return Promise.resolve();
+        return taker
+          .src(src)
+          .pipe(pkgHeader())
+          .pipe(gulpTs({ ...opts, module: 'umd' }))
+          .pipe(umd(umdOptions))
+          .pipe(prettify())
+          .pipe(taker.dest(dst));
+      });
+    }
 
     // typing for ts
     taker.task('ts:scripts:typing', function () {
