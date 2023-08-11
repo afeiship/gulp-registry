@@ -24,8 +24,6 @@ module.exports = class extends DefaultRegistry {
     const pkgHeader = require('@jswork/gulp-pkg-header');
     const rename = require('gulp-rename');
     const gulpTs = require('gulp-typescript');
-    const umd = require('gulp-umd');
-    const prettify = require('gulp-jsbeautifier');
     const tsconfig = require(path.join(process.cwd(), 'tsconfig.json'));
     const opts = tsconfig.compilerOptions;
     const umdModules = ['gulp-umd', 'gulp-jsbeautifier'];
@@ -62,14 +60,17 @@ module.exports = class extends DefaultRegistry {
     // umd
     if (umdOptions) {
       if (!checkModules(umdModules)) return Promise.resolve();
+      const umd = require('gulp-umd');
+      const prettify = require('gulp-jsbeautifier');
+
       taker.task('ts:scripts:umd', function () {
         if (!umdOptions) return Promise.resolve();
         return taker
           .src(src)
-          .pipe(pkgHeader())
           .pipe(gulpTs({ ...opts, module: 'umd' }))
           .pipe(umd(umdOptions))
           .pipe(prettify())
+          .pipe(pkgHeader())
           .pipe(taker.dest(dst));
       });
     }
