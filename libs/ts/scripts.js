@@ -65,7 +65,6 @@ module.exports = class extends DefaultRegistry {
         .pipe(pkgHeader())
         .pipe(gulpTs({ ...opts, module: 'umd' }))
         .pipe(umd(umdOptions))
-        .pipe(rename({ extname: '.umd.js' }))
         .pipe(taker.dest(dst));
     });
 
