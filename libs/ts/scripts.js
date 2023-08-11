@@ -1,14 +1,15 @@
 const fs = require('fs');
 const DefaultRegistry = require('undertaker-registry');
 const checkModules = require('@jswork/check-modules');
+const path = require('path');
+const requiredModules = ['@jswork/gulp-pkg-header', 'gulp-rename', 'gulp-typescript', 'gulp-umd'];
 const defaults = {
   src: ['src/**/*.ts', 'src/**/*.d.ts'],
   srcTypes: 'src/types/*.d.ts',
   dst: './dist',
   dstTypes: './dist/types',
+  umdOptions: null,
 };
-const path = require('path');
-const requiredModules = ['@jswork/gulp-pkg-header', 'gulp-rename', 'gulp-typescript'];
 
 module.exports = class extends DefaultRegistry {
   constructor(inOptions) {
@@ -17,12 +18,13 @@ module.exports = class extends DefaultRegistry {
   }
 
   init(taker) {
-    const { src, dst, srcTypes, dstTypes } = this.options;
+    const { src, dst, srcTypes, dstTypes, umdOptions } = this.options;
     if (!checkModules(requiredModules)) return Promise.resolve();
 
     const pkgHeader = require('@jswork/gulp-pkg-header');
     const rename = require('gulp-rename');
     const gulpTs = require('gulp-typescript');
+    const umd = require('gulp-umd');
     const tsconfig = require(path.join(process.cwd(), 'tsconfig.json'));
     const opts = tsconfig.compilerOptions;
 
@@ -52,6 +54,18 @@ module.exports = class extends DefaultRegistry {
         .pipe(pkgHeader())
         .pipe(gulpTs({ ...opts, module: 'esnext' }))
         .pipe(rename({ extname: '.esm.js' }))
+        .pipe(taker.dest(dst));
+    });
+
+    // umd
+    taker.task('ts:scripts:umd', function () {
+      if (!umdOptions) return Promise.resolve();
+      return taker
+        .src(src)
+        .pipe(pkgHeader())
+        .pipe(gulpTs({ ...opts, module: 'umd' }))
+        .pipe(umd(umdOptions))
+        .pipe(rename({ extname: '.umd.js' }))
         .pipe(taker.dest(dst));
     });
 
