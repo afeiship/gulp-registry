@@ -2,7 +2,14 @@ const fs = require('fs');
 const DefaultRegistry = require('undertaker-registry');
 const checkModules = require('@jswork/check-modules');
 const path = require('path');
-const requiredModules = ['@jswork/gulp-pkg-header', 'gulp-rename', 'gulp-typescript', 'gulp-umd'];
+const requiredModules = [
+  '@jswork/gulp-pkg-header',
+  'gulp-rename',
+  'gulp-typescript',
+  'gulp-umd',
+  'gulp-jsbeautifier',
+];
+
 const defaults = {
   src: ['src/**/*.ts', 'src/**/*.d.ts'],
   srcTypes: 'src/types/*.d.ts',
@@ -25,6 +32,7 @@ module.exports = class extends DefaultRegistry {
     const rename = require('gulp-rename');
     const gulpTs = require('gulp-typescript');
     const umd = require('gulp-umd');
+    const prettify = require('gulp-jsbeautifier');
     const tsconfig = require(path.join(process.cwd(), 'tsconfig.json'));
     const opts = tsconfig.compilerOptions;
 
@@ -65,6 +73,7 @@ module.exports = class extends DefaultRegistry {
         .pipe(pkgHeader())
         .pipe(gulpTs({ ...opts, module: 'umd' }))
         .pipe(umd(umdOptions))
+        .pipe(prettify())
         .pipe(taker.dest(dst));
     });
 
