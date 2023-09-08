@@ -70,6 +70,7 @@ module.exports = class extends DefaultRegistry {
           .pipe(umd(umdOptions))
           .pipe(prettify())
           .pipe(pkgHeader())
+          .pipe(rename({ extname: '.umd.js' }))
           .pipe(taker.dest(dst));
       });
     }
