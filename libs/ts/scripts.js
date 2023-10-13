@@ -40,7 +40,7 @@ module.exports = class extends DefaultRegistry {
     // esm for browser
     taker.task('ts:scripts:esm', function () {
       return taker
-        .src('src/*.ts')
+        .src(src)
         .pipe(pkgHeader())
         .pipe(gulpTs({ ...opts, module: 'esnext' }))
         .pipe(rename({ extname: '.esm.js' }))
