@@ -37,20 +37,10 @@ module.exports = class extends DefaultRegistry {
         .pipe(taker.dest(dst));
     });
 
-    // umd for browser
-    taker.task('ts:scripts:umd', function () {
-      return taker
-        .src(src)
-        .pipe(pkgHeader())
-        .pipe(gulpTs({ ...opts, module: 'umd' }))
-        .pipe(rename({ extname: '.umd.js' }))
-        .pipe(taker.dest(dst));
-    });
-
     // esm for browser
     taker.task('ts:scripts:esm', function () {
       return taker
-        .src(src)
+        .src('src/*.ts')
         .pipe(pkgHeader())
         .pipe(gulpTs({ ...opts, module: 'esnext' }))
         .pipe(rename({ extname: '.esm.js' }))
